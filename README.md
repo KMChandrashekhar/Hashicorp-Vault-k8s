@@ -1,4 +1,4 @@
-## Hashicorp-Vault-k8s-secrets
+## Hashicorp-Vault-k8s-secrets Configuration steps
 
 Create the vault namespace:
 
