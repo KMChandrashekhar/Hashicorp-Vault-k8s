@@ -36,5 +36,15 @@ EOF
 ```rviceType=NodePort" \
   --namespace vault
 ```
+Write the policy to Vault:
 
+```bash
+vault policy write read-policy /home/vault/read-policy.hcl
+```
+
+Enable Kubernetes authentication in Vault:
+
+```bash
+vault auth enable kubernetes
+```
 
