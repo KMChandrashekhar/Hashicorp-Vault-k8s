@@ -63,10 +63,12 @@ Create a role(vault-role) that binds the above policy to a Kubernetes service ac
 
 ```bash
 vault write auth/kubernetes/role/vault-role \
-   bound_service_account_names=vault-serviceaccount \
-   bound_service_account_namespaces=vault \
-   policies=read-policy \
-   ttl=1h
+    bound_service_account_names=vault-serviceaccount \
+    bound_service_account_namespaces=vault \
+    policies=read-policy \
+    ttl=1h \
+    audience=vault
+
 ```
 Create secret using
 
