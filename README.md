@@ -22,6 +22,8 @@ helm install vault hashicorp/vault \
   --set="ui.serviceType=NodePort" \
   --namespace vault
 
+Enter inside the vault pod to configure vault with kubernetes
+
 ```bash
 kubectl exec -it vault-0 -n vault -- /bin/sh
 ```
