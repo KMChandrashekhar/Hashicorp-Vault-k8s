@@ -47,4 +47,21 @@ Enable Kubernetes authentication in Vault:
 ```bash
 vault auth enable kubernetes
 ```
+Configure Vault to communicate with the Kubernetes API server
 
+```bash
+vault write auth/kubernetes/config \
+  token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+  kubernetes_host="https://${KUBERNETES_PORT_443_TCP_ADDR}:443" \
+  kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+```
+
+Create a role(vault-role) that binds the above policy to a Kubernetes service account(vault-serviceaccount) in a specific namespace. This allows the service account to access secrets stored in Vault
+
+```bash
+vault write auth/kubernetes/role/vault-role \
+   bound_service_account_names=vault-serviceaccount \
+   bound_service_account_namespaces=vault \
+   policies=read-policy \
+   ttl=1h
+```
