@@ -65,3 +65,22 @@ vault write auth/kubernetes/role/vault-role \
    policies=read-policy \
    ttl=1h
 ```
+Create secret using
+
+```bash
+vault kv put secret/clisecret token=secretcreatedbycli
+```
+
+Verify if secret created or not
+
+```bash
+vault kv list secret
+```
+
+Check data if secret is injected or not in the pod
+
+```bash
+kubectl exec -it <pod name> -n vault -- ls /vault/secrets/
+kubectl exec -it <pod name> -n vault -- cat /vault/secrets/clisecret
+kubectl exec -it <pod name> -n vault -- cat /vault/secrets/uisecret
+```
