@@ -1,4 +1,4 @@
-## Hashicorp-Vault-k8s-secrets Configuration steps
+## Hashicorp-Vault-k8s-secrets Configuration steps perform through Killercoda
 
 Create the vault namespace:
 
